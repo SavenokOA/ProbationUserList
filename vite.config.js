@@ -6,7 +6,7 @@ export default defineConfig(({command, mode}) => {
 
     return {
         define: {
-            BASE_API_URL: env.BASE_API_URL,
+            VITE_BASE_API_URL: String(env.VITE_BASE_API_URL),
         },
         plugins: [react()],
     }
