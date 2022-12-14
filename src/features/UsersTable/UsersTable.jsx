@@ -2,6 +2,7 @@ import React from 'react';
 import { TableContainer, TablePagination, FormControlLabel, Switch } from '@mui/material';
 import { TableToolbar, Table } from '../../components';
 import { TablePaper, TableWrapper } from './UsersTable.style';
+import { useGetAllUsersQuery } from './lib';
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -29,7 +30,8 @@ const rows = [
   createData('Oreo', 437, 18.0, 63, 4.0)
 ];
 
-export function UsersTable() {
+export const UsersTable = () => {
+  const { data, error, isLoading } = useGetAllUsersQuery('');
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);
@@ -84,4 +86,4 @@ export function UsersTable() {
       />
     </TableWrapper>
   );
-}
+};
