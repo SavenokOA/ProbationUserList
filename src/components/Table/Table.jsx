@@ -4,7 +4,7 @@ import TableCell from '@mui/material/TableCell';
 import { EmptyRow, StyledTable } from './Table.style';
 import { TableHead } from '../TableHead';
 import { TableRow } from '../TableRow';
-import {useTableServices} from "../../hooks/index.js";
+import { useTableServices } from '../../hooks/index.js';
 
 export const Table = ({
   selected,
@@ -18,7 +18,7 @@ export const Table = ({
   setOrderBy,
   dense
 }) => {
-  const { getComparator, stableSort} = useTableServices();
+  const { getComparator, stableSort } = useTableServices();
   const isSelected = (name) => selected.indexOf(name) !== -1;
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
