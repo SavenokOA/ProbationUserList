@@ -19,13 +19,13 @@ const headCells = [
   },
   {
     id: 'email',
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: 'Email'
   },
   {
     id: 'address',
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: 'Address'
   },
@@ -34,6 +34,12 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: 'Phone number'
+  },
+  {
+    id: 'edit-column',
+    numeric: false,
+    disablePadding: false,
+    label: ''
   }
 ];
 

@@ -1,11 +1,10 @@
 import React from 'react';
-import { TableCell, Checkbox, TableRow as MuiTableRow } from '@mui/material';
+import { TableCell, Checkbox, Button, TableRow as MuiTableRow } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
   <MuiTableRow
     hover
-    onClick={(event) => handleClick(event, row.name)}
-    role="checkbox"
     aria-checked={isItemSelected}
     tabIndex={-1}
     key={row.name}
@@ -13,6 +12,8 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
   >
     <TableCell padding="checkbox">
       <Checkbox
+        role="checkbox"
+        onClick={(event) => handleClick(event, row.name)}
         color="primary"
         checked={isItemSelected}
         inputProps={{
@@ -23,8 +24,13 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
     <TableCell component="th" id={labelId} scope="row" padding="none">
       {row.name}
     </TableCell>
-    <TableCell align="right">{row.calories}</TableCell>
-    <TableCell align="right">{row.fat}</TableCell>
+    <TableCell align="left">{row.calories}</TableCell>
+    <TableCell align="left">{row.fat}</TableCell>
     <TableCell align="right">{row.carbs}</TableCell>
+    <TableCell align="right">
+      <Button color="secondary" variant="outlined" startIcon={<EditIcon />}>
+        Edit
+      </Button>
+    </TableCell>
   </MuiTableRow>
 );
