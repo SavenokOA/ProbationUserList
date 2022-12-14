@@ -7,7 +7,6 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
     hover
     aria-checked={isItemSelected}
     tabIndex={-1}
-    key={row.name}
     selected={isItemSelected}
   >
     <TableCell padding="checkbox">
@@ -22,11 +21,11 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
       />
     </TableCell>
     <TableCell component="th" id={labelId} scope="row" padding="none">
-      {row.name}
+      {row.username}
     </TableCell>
-    <TableCell align="left">{row.calories}</TableCell>
-    <TableCell align="left">{row.fat}</TableCell>
-    <TableCell align="right">{row.carbs}</TableCell>
+    <TableCell align="left">{row.email}</TableCell>
+    <TableCell align="left">{row.address.city} {row.address.street}</TableCell>
+    <TableCell align="right">{row.phone}</TableCell>
     <TableCell align="right">
       <Button color="secondary" variant="outlined" startIcon={<EditIcon />}>
         Edit

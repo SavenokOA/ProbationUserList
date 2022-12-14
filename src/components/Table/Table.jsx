@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { TableBody, TableCell } from '@mui/material';
 import { EmptyRow, StyledTable } from './Table.style';
 import { TableHead } from '../TableHead';
@@ -20,7 +20,7 @@ export const Table = ({
   const { getComparator, stableSort } = useTableServices();
   const isSelected = (name) => selected.indexOf(name) !== -1;
   // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+  const emptyRows = rows && page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -65,12 +65,12 @@ export const Table = ({
         orderBy={orderBy}
         onSelectAllClick={handleSelectAllClick}
         onRequestSort={handleRequestSort}
-        rowCount={rows.length}
+        rowCount={rows ? rows.length : 0}
       />
       <TableBody>
         {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.sort(getComparator(order, orderBy)).slice() */}
-        {stableSort(rows, getComparator(order, orderBy))
+        {rows && stableSort(rows, getComparator(order, orderBy))
           .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           .map((row, index) => {
             const isItemSelected = isSelected(row.name);
@@ -82,11 +82,11 @@ export const Table = ({
                 isItemSelected={isItemSelected}
                 row={row}
                 labelId={labelId}
-                key={row.name}
+                key={row.id}
               />
             );
           })}
-        {emptyRows > 0 && (
+        { emptyRows > 0 && (
           <EmptyRow dense={dense} emptyRows={emptyRows}>
             <TableCell colSpan={6} />
           </EmptyRow>
