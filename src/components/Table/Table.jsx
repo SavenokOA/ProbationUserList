@@ -1,10 +1,9 @@
 import React from 'react';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import { TableBody, TableCell } from '@mui/material';
 import { EmptyRow, StyledTable } from './Table.style';
 import { TableHead } from '../TableHead';
 import { TableRow } from '../TableRow';
-import { useTableServices } from '../../hooks/index.js';
+import { useTableServices } from '../../hooks';
 
 export const Table = ({
   selected,

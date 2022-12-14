@@ -1,43 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Box from '@mui/material/Box';
-import TableRow from '@mui/material/TableRow';
-import TableCell from '@mui/material/TableCell';
-import Checkbox from '@mui/material/Checkbox';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import { TableHead as MuiTableHead } from '@mui/material';
+import {
+  Box,
+  TableRow,
+  TableCell,
+  Checkbox,
+  TableSortLabel,
+  TableHead as MuiTableHead
+} from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
 
 const headCells = [
   {
-    id: 'name',
+    id: 'username',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)'
+    label: 'Username'
   },
   {
-    id: 'calories',
+    id: 'email',
     numeric: true,
     disablePadding: false,
-    label: 'Calories'
+    label: 'Email'
   },
   {
-    id: 'fat',
+    id: 'address',
     numeric: true,
     disablePadding: false,
-    label: 'Fat (g)'
+    label: 'Address'
   },
   {
-    id: 'carbs',
+    id: 'phone-number',
     numeric: true,
     disablePadding: false,
-    label: 'Carbs (g)'
-  },
-  {
-    id: 'protein',
-    numeric: true,
-    disablePadding: false,
-    label: 'Protein (g)'
+    label: 'Phone number'
   }
 ];
 

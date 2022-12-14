@@ -1,11 +1,7 @@
 import React from 'react';
-import TableContainer from '@mui/material/TableContainer';
-import TablePagination from '@mui/material/TablePagination';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
+import { TableContainer, TablePagination, FormControlLabel, Switch } from '@mui/material';
+import { TableToolbar, Table } from '../../components';
 import { TablePaper, TableWrapper } from './UsersTable.style';
-import { TableToolbar } from '../../components/TableToolbar';
-import { Table } from '../../components/Table';
 
 function createData(name, calories, fat, carbs, protein) {
   return {

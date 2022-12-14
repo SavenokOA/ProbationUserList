@@ -26,6 +26,5 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
     <TableCell align="right">{row.calories}</TableCell>
     <TableCell align="right">{row.fat}</TableCell>
     <TableCell align="right">{row.carbs}</TableCell>
-    <TableCell align="right">{row.protein}</TableCell>
   </MuiTableRow>
 );
