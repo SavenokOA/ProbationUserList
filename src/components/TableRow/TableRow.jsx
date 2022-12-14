@@ -3,12 +3,7 @@ import { TableCell, Checkbox, Button, TableRow as MuiTableRow } from '@mui/mater
 import EditIcon from '@mui/icons-material/Edit';
 
 export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
-  <MuiTableRow
-    hover
-    aria-checked={isItemSelected}
-    tabIndex={-1}
-    selected={isItemSelected}
-  >
+  <MuiTableRow hover aria-checked={isItemSelected} tabIndex={-1} selected={isItemSelected}>
     <TableCell padding="checkbox">
       <Checkbox
         role="checkbox"
@@ -24,7 +19,9 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
       {row.username}
     </TableCell>
     <TableCell align="left">{row.email}</TableCell>
-    <TableCell align="left">{row.address.city} {row.address.street}</TableCell>
+    <TableCell align="left">
+      {row.address.city} {row.address.street}
+    </TableCell>
     <TableCell align="right">{row.phone}</TableCell>
     <TableCell align="right">
       <Button color="secondary" variant="outlined" startIcon={<EditIcon />}>

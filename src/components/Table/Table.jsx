@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { TableBody, TableCell } from '@mui/material';
 import { EmptyRow, StyledTable } from './Table.style';
 import { TableHead } from '../TableHead';
@@ -70,23 +70,24 @@ export const Table = ({
       <TableBody>
         {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.sort(getComparator(order, orderBy)).slice() */}
-        {rows && stableSort(rows, getComparator(order, orderBy))
-          .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-          .map((row, index) => {
-            const isItemSelected = isSelected(row.name);
-            const labelId = `enhanced-table-checkbox-${index}`;
+        {rows &&
+          stableSort(rows, getComparator(order, orderBy))
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map((row, index) => {
+              const isItemSelected = isSelected(row.name);
+              const labelId = `enhanced-table-checkbox-${index}`;
 
-            return (
-              <TableRow
-                handleClick={handleClick}
-                isItemSelected={isItemSelected}
-                row={row}
-                labelId={labelId}
-                key={row.id}
-              />
-            );
-          })}
-        { emptyRows > 0 && (
+              return (
+                <TableRow
+                  handleClick={handleClick}
+                  isItemSelected={isItemSelected}
+                  row={row}
+                  labelId={labelId}
+                  key={row.id}
+                />
+              );
+            })}
+        {emptyRows > 0 && (
           <EmptyRow dense={dense} emptyRows={emptyRows}>
             <TableCell colSpan={6} />
           </EmptyRow>
