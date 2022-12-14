@@ -1,8 +1,7 @@
 import React from 'react';
 import { TableCell, Checkbox, TableRow as MuiTableRow } from '@mui/material';
 
-export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => {
-  return (
+export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => (
     <MuiTableRow
       hover
       onClick={(event) => handleClick(event, row.name)}
@@ -30,4 +29,3 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => {
       <TableCell align="right">{row.protein}</TableCell>
     </MuiTableRow>
   );
-};

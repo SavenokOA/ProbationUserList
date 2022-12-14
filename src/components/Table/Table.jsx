@@ -4,6 +4,7 @@ import TableCell from '@mui/material/TableCell';
 import { EmptyRow, StyledTable } from './Table.style';
 import { TableHead } from '../TableHead';
 import { TableRow } from '../TableRow';
+import {useTableServices} from "../../hooks/index.js";
 
 export const Table = ({
   selected,
@@ -17,18 +18,8 @@ export const Table = ({
   setOrderBy,
   dense
 }) => {
-  function descendingComparator(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
-      return -1;
-    }
-    if (b[orderBy] > a[orderBy]) {
-      return 1;
-    }
-    return 0;
-  }
-
+  const { getComparator, stableSort} = useTableServices();
   const isSelected = (name) => selected.indexOf(name) !== -1;
-
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -46,26 +37,6 @@ export const Table = ({
     }
     setSelected([]);
   };
-
-  function getComparator(order, orderBy) {
-    return order === 'desc'
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy);
-  }
-
-  // This method is created for cross-browser compatibility, if you don't
-  // need to support IE11, you can use Array.prototype.sort() directly
-  function stableSort(array, comparator) {
-    const stabilizedThis = array.map((el, index) => [el, index]);
-    stabilizedThis.sort((a, b) => {
-      const order = comparator(a[0], b[0]);
-      if (order !== 0) {
-        return order;
-      }
-      return a[1] - b[1];
-    });
-    return stabilizedThis.map((el) => el[0]);
-  }
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
