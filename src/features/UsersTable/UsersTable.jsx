@@ -3,9 +3,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import {TablePaper, TableWrapper} from "./UsersTable.style";
-import {TableToolbar} from "../../components/TableToolbar";
-import {Table} from "../../components/Table";
+import { TablePaper, TableWrapper } from './UsersTable.style';
+import { TableToolbar } from '../../components/TableToolbar';
+import { Table } from '../../components/Table';
 
 function createData(name, calories, fat, carbs, protein) {
   return {
@@ -60,16 +60,16 @@ export function UsersTable() {
         <TableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
-                selected={selected}
-                setSelected={setSelected}
-                page={page}
-                rowsPerPage={rowsPerPage}
-                rows={rows}
-                orderBy={orderBy}
-                order={order}
-                setOrder={setOrder}
-                setOrderBy={setOrderBy}
-                dense={dense}
+            selected={selected}
+            setSelected={setSelected}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            rows={rows}
+            orderBy={orderBy}
+            order={order}
+            setOrder={setOrder}
+            setOrderBy={setOrderBy}
+            dense={dense}
           />
         </TableContainer>
         <TablePagination
