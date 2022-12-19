@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useUpdateUserMutation } from '../../features/UsersTable/lib';
 import {
   Dialog,
   DialogTitle,
@@ -9,7 +10,6 @@ import {
   TextField
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit.js';
-import { useUpdateUserMutation } from '../../features/UsersTable/lib';
 
 export const EditModal = ({ isOpen, setOpen, username, email, address, phone, id }) => {
   const [isUsername, setUsername] = useState(username);

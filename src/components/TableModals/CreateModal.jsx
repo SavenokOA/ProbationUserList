@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useCreateUserMutation } from '../../features/UsersTable/index.js';
 import {
   Dialog,
   DialogTitle,
@@ -9,7 +10,6 @@ import {
   TextField
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import { useCreateUserMutation } from '../../features/UsersTable/index.js';
 
 export const CreateModal = ({ isOpen, setOpen }) => {
   const [isUsername, setUsername] = useState('');
