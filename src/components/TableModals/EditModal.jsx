@@ -25,11 +25,12 @@ export const EditModal = ({ isOpen, setOpen, username, email, address, phone, id
   const handleEdit = async () => {
     await updateUser({
       id,
-      username: isUsername,
-      email: isEmail,
-      address: { street: isAddress },
-      phone: isPhone
+      username: isUsername.trim(),
+      email: isEmail.trim(),
+      address: { street: isAddress.trim() },
+      phone: isPhone.trim()
     });
+
     setOpen(false);
   };
 

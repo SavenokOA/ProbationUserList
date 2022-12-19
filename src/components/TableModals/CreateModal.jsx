@@ -9,18 +9,32 @@ import {
   TextField
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import { useCreateUserMutation } from '../../features/UsersTable/index.js';
 
 export const CreateModal = ({ isOpen, setOpen }) => {
   const [isUsername, setUsername] = useState('');
   const [isEmail, setEmail] = useState('');
   const [isAddress, setAddress] = useState('');
   const [isPhone, setPhone] = useState('');
+  const [createUser] = useCreateUserMutation();
 
   const handleClose = useCallback(() => {
     setOpen(false);
   }, [setOpen]);
 
-  const handleEdit = async () => {
+  const handleCreate = async () => {
+    await createUser({
+      username: isUsername.trim(),
+      email: isEmail.trim(),
+      address: { street: isAddress.trim() },
+      phone: isPhone.trim()
+    });
+
+    setUsername('');
+    setEmail('');
+    setAddress('');
+    setPhone('');
+
     setOpen(false);
   };
 
@@ -60,7 +74,7 @@ export const CreateModal = ({ isOpen, setOpen }) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Close</Button>
-        <Button onClick={handleEdit} variant="outlined" startIcon={<AddIcon />}>
+        <Button onClick={handleCreate} variant="outlined" startIcon={<AddIcon />}>
           Create
         </Button>
       </DialogActions>

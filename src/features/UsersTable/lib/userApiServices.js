@@ -9,6 +9,7 @@ export const userApiServices = createApi({
       query: () => '/users',
       providesTags: (result) => ['User']
     }),
+
     updateUser: builder.mutation({
       query: (user) => ({
         url: `/users/${user.id}`,
@@ -16,10 +17,18 @@ export const userApiServices = createApi({
         body: user
       }),
       invalidatesTags: ['User']
+    }),
+
+    createUser: builder.mutation({
+      query: (user) => ({
+        url: `/users`,
+        method: 'POST',
+        body: user
+      }),
+      invalidatesTags: ['User']
     })
   })
 });
 
-console.log(userApiServices);
-
-export const { useGetAllUsersQuery, useUpdateUserMutation } = userApiServices;
+export const { useGetAllUsersQuery, useUpdateUserMutation, useCreateUserMutation } =
+  userApiServices;

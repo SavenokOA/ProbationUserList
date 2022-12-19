@@ -408,6 +408,33 @@
         "catchPhrase": "Switchable contextually-based project",
         "bs": "aggregate real-time technologies"
       }
+    },
+    {
+      "username": "NewUser",
+      "email": "new-mail@gmail.com",
+      "address": {
+        "street": "adress 88"
+      },
+      "phone": "+380982353534",
+      "id": 20
+    },
+    {
+      "username": "Agata",
+      "email": "new-mail228@gmail.com",
+      "address": {
+        "street": "address 88/11"
+      },
+      "phone": "+38098223412",
+      "id": 21
+    },
+    {
+      "username": "Antonia",
+      "email": "banderas@rambler.ru",
+      "address": {
+        "street": "shishkina 1"
+      },
+      "phone": "+38982098391",
+      "id": 22
     }
   ]
 }
