@@ -1,8 +1,8 @@
 import React from 'react';
 import { TableBody, TableCell } from '@mui/material';
 import { EmptyRow, StyledTable } from './Table.style';
-import { TableHead } from '../TableHead';
-import { TableRow } from '../TableRow';
+import { TableHead } from './TableHead';
+import { TableRow } from './TableRow';
 import { useTableServices } from '../../hooks';
 
 export const Table = ({

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { TableCell, Checkbox, Button, TableRow as MuiTableRow } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import { TableModal } from '../TableModal/TableModal';
+import { EditModal } from '../../TableModals';
 
 export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => {
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
 
   return (
     <MuiTableRow hover aria-checked={isItemSelected} tabIndex={-1} selected={isItemSelected}>
@@ -26,14 +26,14 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => {
       <TableCell align="left">{row.address.street}</TableCell>
       <TableCell align="right">{row.phone}</TableCell>
       <TableCell align="right">
-        <Button variant="outlined" startIcon={<EditIcon />} onClick={() => setModalOpen(true)}>
+        <Button variant="outlined" startIcon={<EditIcon />} onClick={() => setEditModalOpen(true)}>
           Edit
         </Button>
       </TableCell>
-      <TableModal
+      <EditModal
         id={row.id}
-        isOpen={isModalOpen}
-        setOpen={setModalOpen}
+        isOpen={isEditModalOpen}
+        setOpen={setEditModalOpen}
         username={row.username}
         email={row.email}
         address={row.address.street}

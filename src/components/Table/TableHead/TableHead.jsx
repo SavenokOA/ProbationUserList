@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -6,9 +6,12 @@ import {
   TableCell,
   Checkbox,
   TableSortLabel,
-  TableHead as MuiTableHead
+  TableHead as MuiTableHead,
+  Button
 } from '@mui/material';
+import { CreateModal } from '../../TableModals';
 import { visuallyHidden } from '@mui/utils';
+import AddIcon from '@mui/icons-material/Add.js';
 
 const headCells = [
   {
@@ -34,12 +37,6 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: 'Phone number'
-  },
-  {
-    id: 'edit-column',
-    numeric: false,
-    disablePadding: false,
-    label: ''
   }
 ];
 
@@ -51,6 +48,8 @@ export const TableHead = ({
   rowCount,
   onRequestSort
 }) => {
+  const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
@@ -90,7 +89,17 @@ export const TableHead = ({
             </TableSortLabel>
           </TableCell>
         ))}
+        <TableCell align="right">
+          <Button
+            onClick={() => setCreateModalOpen(true)}
+            variant="outlined"
+            startIcon={<AddIcon />}
+          >
+            Create
+          </Button>
+        </TableCell>
       </TableRow>
+      <CreateModal isOpen={isCreateModalOpen} setOpen={setCreateModalOpen} />
     </MuiTableHead>
   );
 };

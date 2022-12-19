@@ -11,7 +11,7 @@ import {
 import EditIcon from '@mui/icons-material/Edit.js';
 import { useUpdateUserMutation } from '../../features/UsersTable/lib';
 
-export const TableModal = ({ isOpen, setOpen, username, email, address, phone, id }) => {
+export const EditModal = ({ isOpen, setOpen, username, email, address, phone, id }) => {
   const [isUsername, setUsername] = useState(username);
   const [isEmail, setEmail] = useState(email);
   const [isAddress, setAddress] = useState(address);
@@ -35,7 +35,7 @@ export const TableModal = ({ isOpen, setOpen, username, email, address, phone, i
 
   return (
     <Dialog title="Edit data" open={isOpen}>
-      <DialogTitle>{'Edit'}</DialogTitle>
+      <DialogTitle>Edit</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">Change user data</DialogContentText>
         <TextField
