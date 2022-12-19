@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { TableCell, Button, TableRow as MuiTableRow } from '@mui/material';
 import { ButtonContainer } from './TableRow.style.js';
-import { EditModal } from '../../TableModals';
+import { EditModal, DeleteModal } from '../../TableModals';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const TableRow = ({ row, labelId }) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
   return (
     <MuiTableRow hover tabIndex={-1}>
@@ -28,7 +29,7 @@ export const TableRow = ({ row, labelId }) => {
           <Button
             variant="outlined"
             startIcon={<DeleteIcon />}
-            onClick={() => setEditModalOpen(true)}
+            onClick={() => setDeleteModalOpen(true)}
           >
             Delete
           </Button>
@@ -43,6 +44,7 @@ export const TableRow = ({ row, labelId }) => {
         address={row.address.street}
         phone={row.phone}
       />
+      <DeleteModal id={row.id} isOpen={isDeleteModalOpen} setOpen={setDeleteModalOpen} />
     </MuiTableRow>
   );
 };

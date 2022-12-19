@@ -93,15 +93,6 @@
       }
     },
     {
-      "id": 5,
-      "username": "Kamren",
-      "email": "Lucio_Hettinger@annie.ca",
-      "address": {
-        "street": "Пушкинская 79/5"
-      },
-      "phone": "(254)954-1289"
-    },
-    {
       "id": 6,
       "name": "Mrs. Dennis Schulist",
       "username": "Leopoldo_Corkery",
@@ -263,29 +254,6 @@
       }
     },
     {
-      "id": 13,
-      "name": "Clementine Bauch",
-      "username": "Samantha",
-      "email": "Nathan@yesenia.net",
-      "address": {
-        "street": "Douglas Extension",
-        "suite": "Suite 847",
-        "city": "McKenziehaven",
-        "zipcode": "59590-4157",
-        "geo": {
-          "lat": "-68.6102",
-          "lng": "-47.0653"
-        }
-      },
-      "phone": "1-463-123-4447",
-      "website": "ramiro.info",
-      "company": {
-        "name": "Romaguera-Jacobson",
-        "catchPhrase": "Face to face bifurcated interface",
-        "bs": "e-enable strategic applications"
-      }
-    },
-    {
       "id": 14,
       "name": "Patricia Lebsack",
       "username": "Karianne",
@@ -307,15 +275,6 @@
         "catchPhrase": "Multi-tiered zero tolerance productivity",
         "bs": "transition cutting-edge web services"
       }
-    },
-    {
-      "id": 15,
-      "username": "Karera",
-      "email": "Lucio_Hettinger@annie.ca",
-      "address": {
-        "street": "г. Днепр, Новая почта №72 (ул. Байкальская 82)"
-      },
-      "phone": "(254)954-1289"
     },
     {
       "id": 16,

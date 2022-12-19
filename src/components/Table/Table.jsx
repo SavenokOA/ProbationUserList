@@ -5,16 +5,7 @@ import { TableHead } from './TableHead';
 import { TableRow } from './TableRow';
 import { useTableServices } from '../../hooks';
 
-export const Table = ({
-  page,
-  rowsPerPage,
-  rows,
-  orderBy,
-  order,
-  setOrder,
-  setOrderBy,
-  dense
-}) => {
+export const Table = ({ page, rowsPerPage, rows, orderBy, order, setOrder, setOrderBy, dense }) => {
   const { getComparator, stableSort } = useTableServices();
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = rows && page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
