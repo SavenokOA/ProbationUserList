@@ -1,16 +1,22 @@
-import React from 'react';
-import { TableContainer, TablePagination, FormControlLabel, Switch } from '@mui/material';
-import { Table } from '../../components';
-import { TablePaper, TableWrapper } from './UsersTable.style';
+import React, { useState } from 'react';
 import { useGetAllUsersQuery } from './lib';
+import { Table } from '../../components';
+import { SpinnerContainer, TablePaper, TableWrapper } from './UsersTable.style';
+import {
+  TableContainer,
+  TablePagination,
+  FormControlLabel,
+  Switch,
+  CircularProgress
+} from '@mui/material';
 
 export const UsersTable = () => {
   const { data: rows, error, isLoading } = useGetAllUsersQuery();
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('name');
-  const [page, setPage] = React.useState(0);
-  const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('name');
+  const [page, setPage] = useState(0);
+  const [dense, setDense] = useState(false);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -24,6 +30,18 @@ export const UsersTable = () => {
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
+
+  if (isLoading) {
+    return (
+      <SpinnerContainer>
+        <CircularProgress size={100} />
+      </SpinnerContainer>
+    );
+  }
+
+  if (error) {
+    return <SpinnerContainer>Something goes wrong with fetching data</SpinnerContainer>;
+  }
 
   return (
     <TableWrapper>
