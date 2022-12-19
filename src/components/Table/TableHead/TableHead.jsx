@@ -4,7 +4,6 @@ import {
   Box,
   TableRow,
   TableCell,
-  Checkbox,
   TableSortLabel,
   TableHead as MuiTableHead,
   Button
@@ -17,7 +16,7 @@ const headCells = [
   {
     id: 'username',
     numeric: false,
-    disablePadding: true,
+    disablePadding: false,
     label: 'Username'
   },
   {
@@ -40,14 +39,7 @@ const headCells = [
   }
 ];
 
-export const TableHead = ({
-  onSelectAllClick,
-  order,
-  orderBy,
-  numSelected,
-  rowCount,
-  onRequestSort
-}) => {
+export const TableHead = ({ order, orderBy, onRequestSort }) => {
   const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
   const createSortHandler = (property) => (event) => {
@@ -57,17 +49,6 @@ export const TableHead = ({
   return (
     <MuiTableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all desserts'
-            }}
-          />
-        </TableCell>
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -105,10 +86,7 @@ export const TableHead = ({
 };
 
 TableHead.propTypes = {
-  numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired
+  orderBy: PropTypes.string.isRequired
 };

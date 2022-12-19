@@ -6,8 +6,6 @@ import { TableRow } from './TableRow';
 import { useTableServices } from '../../hooks';
 
 export const Table = ({
-  selected,
-  setSelected,
   page,
   rowsPerPage,
   rows,
@@ -18,7 +16,6 @@ export const Table = ({
   dense
 }) => {
   const { getComparator, stableSort } = useTableServices();
-  const isSelected = (name) => selected.indexOf(name) !== -1;
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = rows && page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -28,45 +25,9 @@ export const Table = ({
     setOrderBy(property);
   };
 
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelected = rows.map((n) => n.name);
-      setSelected(newSelected);
-      return;
-    }
-    setSelected([]);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-
-    setSelected(newSelected);
-  };
-
   return (
     <StyledTable aria-labelledby="usersTable" size={dense ? 'small' : 'medium'}>
-      <TableHead
-        numSelected={selected.length}
-        order={order}
-        orderBy={orderBy}
-        onSelectAllClick={handleSelectAllClick}
-        onRequestSort={handleRequestSort}
-        rowCount={rows ? rows.length : 0}
-      />
+      <TableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
       <TableBody>
         {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.sort(getComparator(order, orderBy)).slice() */}
@@ -74,18 +35,9 @@ export const Table = ({
           stableSort(rows, getComparator(order, orderBy))
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row, index) => {
-              const isItemSelected = isSelected(row.name);
               const labelId = `enhanced-table-checkbox-${index}`;
 
-              return (
-                <TableRow
-                  handleClick={handleClick}
-                  isItemSelected={isItemSelected}
-                  row={row}
-                  labelId={labelId}
-                  key={row.id}
-                />
-              );
+              return <TableRow row={row} labelId={labelId} key={row.id} />;
             })}
         {emptyRows > 0 && (
           <EmptyRow dense={dense} emptyRows={emptyRows}>
