@@ -5,7 +5,7 @@ import { TablePaper, TableWrapper } from './UsersTable.style';
 import { useGetAllUsersQuery } from './lib';
 
 export const UsersTable = () => {
-  const { data: rows, error, isLoading } = useGetAllUsersQuery('');
+  const { data: rows, error, isLoading } = useGetAllUsersQuery();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('name');
   const [selected, setSelected] = React.useState([]);

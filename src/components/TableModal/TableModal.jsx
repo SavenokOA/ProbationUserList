@@ -9,18 +9,29 @@ import {
   TextField
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit.js';
+import { useUpdateUserMutation } from '../../features/UsersTable/lib';
 
-export const TableModal = ({ isOpen, setOpen, username, email, address, phone }) => {
+export const TableModal = ({ isOpen, setOpen, username, email, address, phone, id }) => {
   const [isUsername, setUsername] = useState(username);
   const [isEmail, setEmail] = useState(email);
   const [isAddress, setAddress] = useState(address);
   const [isPhone, setPhone] = useState(phone);
+  const [updateUser, {}] = useUpdateUserMutation();
 
   const handleClose = useCallback(() => {
     setOpen(false);
   }, [setOpen]);
 
-  const handleEdit = () => {};
+  const handleEdit = async () => {
+    await updateUser({
+      id,
+      username: isUsername,
+      email: isEmail,
+      address: { street: isAddress },
+      phone: isPhone
+    });
+    setOpen(false);
+  };
 
   return (
     <Dialog title="Edit data" open={isOpen}>

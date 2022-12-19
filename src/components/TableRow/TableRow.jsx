@@ -31,6 +31,7 @@ export const TableRow = ({ handleClick, isItemSelected, row, labelId }) => {
         </Button>
       </TableCell>
       <TableModal
+        id={row.id}
         isOpen={isModalOpen}
         setOpen={setModalOpen}
         username={row.username}
