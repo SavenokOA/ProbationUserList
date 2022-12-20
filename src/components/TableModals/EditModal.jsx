@@ -23,7 +23,7 @@ export const EditModal = ({ isOpen, setOpen, username, email, address, phone, id
     setOpen(false);
   }, [setOpen]);
 
-  const handleEdit = async () => {
+  const handleEdit = useCallback(async () => {
     await updateUser({
       id,
       username: isUsername.trim(),
@@ -33,7 +33,7 @@ export const EditModal = ({ isOpen, setOpen, username, email, address, phone, id
     });
 
     setOpen(false);
-  };
+  }, [isUsername, isEmail, isAddress, isPhone, id]);
 
   return (
     <Dialog title="Edit data" open={isOpen}>

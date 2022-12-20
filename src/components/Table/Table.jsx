@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import PropTypes from 'prop-types';
 import { TableBody, TableCell } from '@mui/material';
 import { EmptyRow, StyledTable } from './Table.style';
@@ -8,21 +8,18 @@ import { useTableServices } from '../../hooks';
 
 export const Table = ({ page, rowsPerPage, rows, orderBy, order, setOrder, setOrderBy, dense }) => {
   const { getComparator, stableSort } = useTableServices();
-  // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = rows && page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const handleRequestSort = (event, property) => {
+  const handleRequestSort = useCallback((event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
-  };
+  }, []);
 
   return (
     <StyledTable aria-labelledby="usersTable" size={dense ? 'small' : 'medium'}>
       <TableHead order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
       <TableBody>
-        {/* if you don't need to support IE11, you can replace the `stableSort` call with:
-                 rows.sort(getComparator(order, orderBy)).slice() */}
         {rows &&
           stableSort(rows, getComparator(order, orderBy))
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
