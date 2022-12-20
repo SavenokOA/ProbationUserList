@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import {
   Box,
@@ -46,6 +46,10 @@ export const TableHead = ({ order, orderBy, onRequestSort }) => {
     onRequestSort(event, property);
   };
 
+  const handleCreateClick = useCallback(() => {
+    setCreateModalOpen(true);
+  }, [])
+
   return (
     <MuiTableHead>
       <TableRow>
@@ -72,7 +76,7 @@ export const TableHead = ({ order, orderBy, onRequestSort }) => {
         ))}
         <TableCell align="right">
           <Button
-            onClick={() => setCreateModalOpen(true)}
+            onClick={handleCreateClick}
             variant="outlined"
             startIcon={<AddIcon />}
           >

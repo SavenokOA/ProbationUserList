@@ -23,7 +23,7 @@ export const CreateModal = ({ isOpen, setOpen }) => {
     setOpen(false);
   }, [setOpen]);
 
-  const handleCreate = async () => {
+  const handleCreate = useCallback(async () => {
     await createUser({
       username: isUsername.trim(),
       email: isEmail.trim(),
@@ -37,7 +37,7 @@ export const CreateModal = ({ isOpen, setOpen }) => {
     setPhone('');
 
     setOpen(false);
-  };
+  }, [isUsername, isEmail, isAddress, isPhone]) ;
 
   return (
     <Dialog title="Create user" open={isOpen}>

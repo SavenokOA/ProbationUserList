@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, {memo, useCallback, useState} from 'react';
 import PropTypes from 'prop-types';
 import { TableCell, Button, TableRow as MuiTableRow } from '@mui/material';
 import { ButtonContainer } from './TableRow.style.js';
@@ -9,6 +9,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 export const TableRow = memo(({ id, username, email, address, phone, labelId }) => {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
+
+  const handleEditClick = useCallback(() => {
+      setEditModalOpen(true)
+  }, []);
+
+    const handleDeleteClick = useCallback(() => {
+        setDeleteModalOpen(true)
+    }, []);
 
   return (
     <MuiTableRow hover tabIndex={-1}>
@@ -23,14 +31,14 @@ export const TableRow = memo(({ id, username, email, address, phone, labelId }) 
           <Button
             variant="outlined"
             startIcon={<EditIcon />}
-            onClick={() => setEditModalOpen(true)}
+            onClick={handleEditClick}
           >
             Edit
           </Button>
           <Button
             variant="outlined"
             startIcon={<DeleteIcon />}
-            onClick={() => setDeleteModalOpen(true)}
+            onClick={handleDeleteClick}
           >
             Delete
           </Button>
