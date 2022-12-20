@@ -28,7 +28,17 @@ export const Table = ({ page, rowsPerPage, rows, orderBy, order, setOrder, setOr
             .map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`;
 
-              return <TableRow row={row} labelId={labelId} key={row.id} />;
+              return (
+                <TableRow
+                  id={row.id}
+                  username={row.username}
+                  email={row.email}
+                  address={row.address.street}
+                  phone={row.phone}
+                  labelId={labelId}
+                  key={row.id}
+                />
+              );
             })}
         {emptyRows > 0 && (
           <EmptyRow dense={dense} emptyRows={emptyRows}>
