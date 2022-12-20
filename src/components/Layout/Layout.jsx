@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Typography } from '@mui/material';
 import { Wrapper } from './Layout.style.js';
 
@@ -9,4 +10,8 @@ export const Layout = ({ children }) => {
       {children}
     </Wrapper>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.element
 };

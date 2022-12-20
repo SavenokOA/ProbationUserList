@@ -1,4 +1,5 @@
 import React, { memo, useState } from 'react';
+import PropTypes from 'prop-types';
 import { TableCell, Button, TableRow as MuiTableRow } from '@mui/material';
 import { ButtonContainer } from './TableRow.style.js';
 import { EditModal, DeleteModal } from '../../TableModals';
@@ -48,3 +49,12 @@ export const TableRow = memo(({ id, username, email, address, phone, labelId }) 
     </MuiTableRow>
   );
 });
+
+TableRow.propTypes = {
+  id: PropTypes.number,
+  username: PropTypes.string,
+  email: PropTypes.string,
+  address: PropTypes.string,
+  phone: PropTypes.string,
+  labelId: PropTypes.string
+};

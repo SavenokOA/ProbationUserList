@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { useDeleteUserMutation } from '../../features/UsersTable/lib';
 import {
   Dialog,
@@ -39,3 +40,5 @@ export const DeleteModal = ({ isOpen, setOpen, id }) => {
     </Dialog>
   );
 };
+
+DeleteModal.propTypes = { isOpen: PropTypes.bool, setOpen: PropTypes.func, id: PropTypes.number };

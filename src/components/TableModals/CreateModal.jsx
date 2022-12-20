@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useCreateUserMutation } from '../../features/UsersTable/index.js';
 import {
   Dialog,
@@ -81,3 +82,5 @@ export const CreateModal = ({ isOpen, setOpen }) => {
     </Dialog>
   );
 };
+
+CreateModal.propTypes = { isOpen: PropTypes.bool, setOpen: PropTypes.func };

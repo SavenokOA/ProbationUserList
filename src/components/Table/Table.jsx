@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { TableBody, TableCell } from '@mui/material';
 import { EmptyRow, StyledTable } from './Table.style';
 import { TableHead } from './TableHead';
@@ -48,4 +49,15 @@ export const Table = ({ page, rowsPerPage, rows, orderBy, order, setOrder, setOr
       </TableBody>
     </StyledTable>
   );
+};
+
+Table.propTypes = {
+  page: PropTypes.number,
+  rowsPerPage: PropTypes.number,
+  rows: PropTypes.array,
+  orderBy: PropTypes.string,
+  order: PropTypes.string,
+  setOrder: PropTypes.func,
+  setOrderBy: PropTypes.func,
+  dense: PropTypes.bool
 };

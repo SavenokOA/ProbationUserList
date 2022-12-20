@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useUpdateUserMutation } from '../../features/UsersTable/lib';
 import {
   Dialog,
@@ -76,4 +77,15 @@ export const EditModal = ({ isOpen, setOpen, username, email, address, phone, id
       </DialogActions>
     </Dialog>
   );
+};
+
+EditModal.propTypes = {
+  id: PropTypes.number,
+  username: PropTypes.string,
+  email: PropTypes.string,
+  address: PropTypes.string,
+  phone: PropTypes.string,
+  labelId: PropTypes.string,
+  setOpen: PropTypes.func,
+  isOpen: PropTypes.bool
 };
